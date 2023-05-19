@@ -34,3 +34,6 @@ public class TestExample {
 	}
 	
 }
+
+
+// de adaugat proiectul pe remote
