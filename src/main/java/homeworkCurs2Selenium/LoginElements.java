@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class LoginElements {
 
@@ -27,12 +28,15 @@ public class LoginElements {
 		WebElement userName = driver.findElement(By.cssSelector("input[placeholder='Login or Email']"));
 		WebElement password = driver.findElement(By.cssSelector("input[placeholder='Password']"));
 		
-		assertFalse(userName.isDisplayed());
-		assertFalse(password.isDisplayed());
+		SoftAssert sa = new SoftAssert();
+		
+		sa.assertFalse(userName.isDisplayed());
+		sa.assertFalse(password.isDisplayed());
 		login.click();
 		Thread.sleep(4000);
-		assertTrue(userName.isDisplayed());
-		assertTrue(password.isDisplayed());
+		sa.assertFalse(userName.isDisplayed());
+		sa.assertTrue(password.isDisplayed());
+		sa.assertAll();
 		
 	}
 
