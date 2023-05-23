@@ -1,5 +1,6 @@
 package homeworkCurs2Selenium;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
@@ -21,23 +22,23 @@ public class LoginElements {
 	}
 
 	@Test
-	public void checkLoginElements() {
+	public void checkLoginElements() throws InterruptedException {
 		WebElement login = driver.findElement(By.cssSelector(".popup_link.popup_login_link.icon-user.inited"));
-		assertTrue(true);
-		if (driver.findElement(By.cssSelector("input[placeholder=\"Login or Email\"]")).isDisplayed()
-				|| driver.findElement(By.cssSelector("input[placeholder=\"Password\"]")).isDisplayed()) {
-			assertTrue(false);
-			login.click();
-			if (driver.findElement(By.cssSelector("input[placeholder=\"Login or Email\"]")).isDisplayed()
-					|| driver.findElement(By.cssSelector("input[placeholder=\"Password\"]")).isDisplayed()) {
-				assertTrue(true);
-			}
-		}
+		WebElement userName = driver.findElement(By.cssSelector("input[placeholder='Login or Email']"));
+		WebElement password = driver.findElement(By.cssSelector("input[placeholder='Password']"));
+		
+		assertFalse(userName.isDisplayed());
+		assertFalse(password.isDisplayed());
+		login.click();
+		Thread.sleep(4000);
+		assertTrue(userName.isDisplayed());
+		assertTrue(password.isDisplayed());
+		
 	}
 
 	@AfterClass
 	public void closeBrowser() throws InterruptedException {
-		Thread.sleep(8000);
+		Thread.sleep(4000);
 		driver.close();
 	}
 
