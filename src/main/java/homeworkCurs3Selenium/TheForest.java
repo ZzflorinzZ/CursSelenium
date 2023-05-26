@@ -21,20 +21,18 @@ public class TheForest extends BaseTest {
 
 		List<WebElement> categories = driver.findElements(By.className("sc_tabs_title"));
 		System.out.println(categories.size());
+		WebElement theForestBook = null;
 		SoftAssert sa = new SoftAssert();
-		int count = 0;
+
 
 		for (WebElement element : categories) {
 			element.click();
-			count++;
 			Thread.sleep(1000);
-			WebElement theForestBook = driver.findElement(By.linkText("The forest"));
+			theForestBook = driver.findElement(By.linkText("The forest"));
 			sa.assertTrue(theForestBook.isDisplayed());
 			sa.assertAll();
-			if (count == 4) {			//assertTrue(categories.get(3).click());
-				theForestBook.click();
-				assertEquals(driver.getCurrentUrl(), "https://keybooks.ro/shop/the-forest/");
 			}
-		}
+		theForestBook.click();
+		assertEquals(driver.getCurrentUrl(), "https://keybooks.ro/shop/the-forest/");
 	}
 }
