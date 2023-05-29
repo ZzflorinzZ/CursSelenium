@@ -15,12 +15,12 @@ public class SendMessage extends BaseTest {
 	@Test
 	public void sendContactMessage() throws InterruptedException {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		SoftAssert sa = new SoftAssert();
 		
 		WebElement contacts = driver.findElement(By.cssSelector("nav[class='menu_main_nav_area'] a[href$='contacts/']"));
 //		Thread.sleep(1000);
 		contacts.click();
-		sa.assertEquals(driver.getCurrentUrl(), "https://keybooks.ro/contacts/");
+		assertEquals(driver.getCurrentUrl(), "https://keybooks.ro/contacts/");
+
 		
 		WebElement name = driver.findElement(By.cssSelector("input[name='your-name'],[placeholder='Name*']"));
 		name.sendKeys("Florin");
@@ -33,7 +33,7 @@ public class SendMessage extends BaseTest {
 //		Thread.sleep(1000);
 		WebElement message = driver.findElement(By.cssSelector("textarea[name='your-message'],[placeholder='Message*']"));				
 		message.sendKeys("CSS selectors test");
-//		Thread.sleep(1000);						
+//		Thread.sleep(1000);	
 
 		WebElement sendMessageButton = driver.findElement(By.cssSelector("input[type='submit'][value='Send Message']"));
 		sendMessageButton.click();
