@@ -11,9 +11,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import pages.BasePage;
+
 public class BaseTest {
 	
-	public WebDriver driver;
+	public static WebDriver driver;
+	public BasePage app;
 
 	@BeforeClass
 	public void setup() {
@@ -22,6 +25,7 @@ public class BaseTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		driver.get("https://keybooks.ro/");
+		app = new BasePage();
 	}
 
 	@AfterClass
