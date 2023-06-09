@@ -36,7 +36,7 @@ public class ReviewsPage {
 		driver.findElement(reviewField).sendKeys(comment);
 		driver.findElement(nameField).sendKeys(name);
 		driver.findElement(emailField).sendKeys(email);
-		driver.findElement(submitButton).click();
+		driver.findElement(saveCheckbox).click();
 	}
 	
 	public void acceptJSAlert() {
