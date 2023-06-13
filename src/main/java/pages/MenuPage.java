@@ -1,7 +1,12 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MenuPage {
 	
@@ -11,13 +16,27 @@ public class MenuPage {
 		this.driver = driver;
 	}
 	//driver.findElement(By.linkTesxt("BOOKS"));
-	public By shopLink = By.linkText("BOOKS");
+//	public By shopLink = By.linkText("BOOKS");
 	//driver.findElement(shopLink);
 	public By contactLink = By.linkText("CONTACTS");
 	public By loginLink = By.linkText("Login");
+	public By shopLink = By.xpath("//li[@id='menu-item-262']/a[text()='Books']");
+	public By eventsLink = By.xpath("//li[@id='menu-item-1047']/a[text()='Events']");
 	
 	public void navigateTo(By locator) {
 		driver.findElement(locator).click();
+	}
+	
+	public void navigateBack(By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		driver.navigate().back();
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+	
+	public void navigateForward(By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		driver.navigate().forward();
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 }

@@ -39,7 +39,7 @@ public class XpathExample2 extends BaseTest{
 						+ "following-sibling::div[contains(@class,'remember_field')]/input"))
 		.click();
 		
-		//preeciding
+		//preceding
 		driver.findElement(
 				By.xpath("//form[contains(@class,'login_form')]/"
 						+ "preceding::input[@class='submit_button']"))

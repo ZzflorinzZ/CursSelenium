@@ -13,6 +13,7 @@ public class NavigationTest extends BaseTest{
 		//driver.findElement(menu.contactLink).click();
 		menu.navigateTo(menu.contactLink);
 		menu.navigateTo(menu.shopLink);
+		
 	}
 
 }

@@ -1,7 +1,10 @@
 package pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import com.github.javafaker.Faker;
 
 public class ReviewsPage {
 	
@@ -22,6 +25,7 @@ public class ReviewsPage {
 	public By emailField = By.cssSelector("input[id='email']");
 	public By saveCheckbox = By.cssSelector("input[id='wp-comment-cookies-consent']");
 	public By submitButton = By.cssSelector("input[id='submit']");
+	public By awaitingApproval = By.cssSelector("em[class$='awaiting-approval']");
 	
 	public void openReview() {
 		driver.findElement(reviewsTab).click();
@@ -31,11 +35,16 @@ public class ReviewsPage {
 		driver.findElement(submitButton).click();
 	}
 	
-	public void fillInReviewFields(String comment, String name, String email) {
+	public void fillInReviewFields() {
+		
+		Faker faker = new Faker();
+		String comment = faker.chuckNorris().fact();
+		System.out.println(comment);
+		
 		driver.findElement(threeStarRating).click();
 		driver.findElement(reviewField).sendKeys(comment);
-		driver.findElement(nameField).sendKeys(name);
-		driver.findElement(emailField).sendKeys(email);
+		driver.findElement(nameField).sendKeys(faker.name().firstName());
+		driver.findElement(emailField).sendKeys(faker.internet().emailAddress());
 		driver.findElement(saveCheckbox).click();
 	}
 	
