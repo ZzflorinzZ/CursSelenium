@@ -32,9 +32,9 @@ public class EventsPage {
 	public List<By> listOfEvents = new ArrayList<By>();
 	public By events = By.xpath("//div[contains(@class,'column_padding_bottom')]");
 		
-
 	public By eventUnavailabilityConfirmationText = By.xpath("//li[text()='This event has passed.']");
 
+/*	
 	public boolean eventAvailabilityConfirmation() {
 		try {
 			driver.findElement(eventUnavailabilityConfirmationText).isDisplayed();
@@ -43,5 +43,6 @@ public class EventsPage {
 			return false;
 		}
 	}
+*/
 
 }
