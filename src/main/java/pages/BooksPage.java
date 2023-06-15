@@ -15,8 +15,5 @@ public class BooksPage {
 	public By newGalaxy = By.xpath("//a[text()='New galaxy']");
 	public By aHundredAndOneRecepies = By.xpath("//a[text()='A hundred and one receipes']");
 	
-	public void openBook(By locator) {
-		driver.findElement(locator).click();
-	}
 
 }
