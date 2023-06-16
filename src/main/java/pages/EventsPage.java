@@ -29,12 +29,17 @@ public class EventsPage {
 	public By historyOfEnglishLiterature = By.xpath("//a[text()='History of English literature']");
 	public By dayOfClasicLiterature = By.xpath("//a[text()='Day of Classic Literature']");
 */	
-	public List<By> listOfEvents = new ArrayList<By>();
-	public By events = By.xpath("//div[contains(@class,'column_padding_bottom')]");
+//	public List<By> listOfEvents = new ArrayList<By>();
+//	public By events = By.xpath("//div[contains(@class,'column_padding_bottom')]");
+	
+	public List<WebElement> listOfEvents(){
+		return driver.findElements(By.xpath("//h5[contains(@class,'sc_events_item_title')]"));
+	}
+//	public List<WebElement> listOfEvents = driver.findElements(By.xpath("//div[contains(@class,'column_padding_bottom')]"));
 		
 	public By eventUnavailabilityConfirmationText = By.xpath("//li[text()='This event has passed.']");
 
-/*	
+	
 	public boolean eventAvailabilityConfirmation() {
 		try {
 			driver.findElement(eventUnavailabilityConfirmationText).isDisplayed();
@@ -43,6 +48,6 @@ public class EventsPage {
 			return false;
 		}
 	}
-*/
+
 
 }

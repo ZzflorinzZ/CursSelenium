@@ -27,6 +27,7 @@ public class BookDetailsPage {
 	public By bookTags = By.xpath("//div[@class='product_meta']/child::span[@class='tagged_as']");
 	public By bookProductID = By.xpath("//div[@class='product_meta']/child::span[@class='product_id']");
 	public By bookMagnifyingGlass = By.xpath("//a[contains(@href,'#')][contains(@class,'trigger')]");
+
 	
 	public By bookRating = By.xpath("//div[contains(@class,'rating')]/div[@class='star-rating']");
 	

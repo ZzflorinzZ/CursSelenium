@@ -3,8 +3,11 @@ package tests;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -17,18 +20,34 @@ public class EventsTest extends BaseTest {
 		SoftAssert sa = new SoftAssert();
 
 		app.menu.navigateTo(app.menu.eventsLink);
-		app.eventsPage.listOfEvents.add(app.eventsPage.events); 	//lista are un singur element; nu am stiut cum sa scriu findElements pt un element de tip By
-		System.out.println(app.eventsPage.listOfEvents.size());
-
-		for (By element : app.eventsPage.listOfEvents) {
-			app.menu.navigateTo(element);	//nu face click pe element
+//		app.eventsPage.listOfEvents.add(app.eventsPage.events); 	//lista are un singur element; nu am stiut cum sa scriu findElements pt un element de tip By
+//		System.out.println(app.eventsPage.listOfEvents.size());
+		List<WebElement> lista1 = app.eventsPage.listOfEvents();
+		
+		for (int i=0; i<lista1.size(); i++) {
+			lista1 = app.eventsPage.listOfEvents();
+			lista1.get(i).click();
+			if (app.eventsPage.eventAvailabilityConfirmation()) {
+				sa.assertTrue(true);
+			} else {
+				sa.assertFalse(false);
+			}
+		//	app.menu.navigateBackW(element);
+			app.menu.navigateTo(app.menu.eventsLink);
+		}
+		
+/*		for (WebElement element : lista1) {
+			lista1 = app.eventsPage.listOfEvents();
+			element.click();
 			if (driver.findElement(app.eventsPage.eventUnavailabilityConfirmationText) != null) {
 				sa.assertTrue(true);
 			} else {
 				sa.assertTrue(false);
 			}
-			app.menu.navigateBack(element);
+		//	app.menu.navigateBackW(element);
+			app.menu.navigateTo(app.menu.eventsLink);
 		}
+*/		
 		sa.assertAll();
 
 		/*
